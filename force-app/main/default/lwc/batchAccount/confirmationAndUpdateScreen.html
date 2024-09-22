@@ -1,0 +1,42 @@
+<!-- Screen 2: Confirmation and Update -->
+<template>
+    <lightning-card title="Confirmation and Update" icon-name="standard:account">
+    <!-- Button to submit selected accounts -->
+    <div class="slds-page-header__controls">
+        <div class="slds-page-header__control">
+            <ul class="slds-button-group-list">
+                <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleNextAndBack}>
+                        <lightning-icon icon-name="utility:back" size="xx-small" class="slds-button__icon slds-button__icon_left"></lightning-icon>
+                        Back
+                    </button>
+                </li>
+                <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleUpdate}>
+                        <lightning-icon icon-name="utility:refresh" size="xx-small" class="slds-button__icon slds-button__icon_left"></lightning-icon>
+                        Update
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Selected accounts table -->
+    <template if:true={selectedAccounts}>
+        <lightning-datatable
+                key-field="id"
+                data={selectedAccounts}
+                columns={columns}
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+    </template>
+
+    <!--Else dispaly this error-->
+    <template if:false ={error}>
+        <div class="slds-text-color_error">
+            An error occurred while loading the accounts: {error.body.message}
+        </div>
+    </template>
+    
+</lightning-card>
+</template>

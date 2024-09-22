@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Stage --></label>
+    <name>Stage__c</name>
+    <picklistValues>
+        <masterLabel>Closed - Accepted</masterLabel>
+        <translation><!-- Closed - Accepted --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Closed - Declined</masterLabel>
+        <translation><!-- Closed - Declined --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Closed - Position Closed</masterLabel>
+        <translation><!-- Closed - Position Closed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Closed - Rejected</masterLabel>
+        <translation><!-- Closed - Rejected --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Interviews Completed</masterLabel>
+        <translation><!-- Interviews Completed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>New</masterLabel>
+        <translation><!-- New --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Offer Extended</masterLabel>
+        <translation><!-- Offer Extended --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Phone Screen</masterLabel>
+        <translation><!-- Phone Screen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Schedule Interviews</masterLabel>
+        <translation><!-- Schedule Interviews --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

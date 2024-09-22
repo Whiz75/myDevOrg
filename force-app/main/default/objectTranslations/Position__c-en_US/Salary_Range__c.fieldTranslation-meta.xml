@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Salary Range --></label>
+    <name>Salary_Range__c</name>
+    <picklistValues>
+        <masterLabel>120K+</masterLabel>
+        <translation><!-- 120K+ --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>50K-75K</masterLabel>
+        <translation><!-- 50K-75K --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>75K-90K</masterLabel>
+        <translation><!-- 75K-90K --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>90K-120K</masterLabel>
+        <translation><!-- 90K-120K --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

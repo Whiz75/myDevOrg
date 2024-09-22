@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Operating Systems --></label>
+    <name>Operating_Systems__c</name>
+    <picklistValues>
+        <masterLabel>Mac</masterLabel>
+        <translation><!-- Mac --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unix</masterLabel>
+        <translation><!-- Unix --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Windows</masterLabel>
+        <translation><!-- Windows --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

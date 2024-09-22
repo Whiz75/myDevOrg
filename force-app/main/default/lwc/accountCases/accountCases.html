@@ -1,0 +1,28 @@
+<!-- accountCases.html -->
+<template>
+    <lightning-card title="Account Cases" icon-name="standard:case">
+        <div class="slds-m-around_medium">
+            <div class="slds-m-top_medium">
+                <lightning-button 
+                    label="Download Cases" 
+                    onclick={handleDownload} 
+                    variant="brand">
+                </lightning-button>
+            </div>
+
+            <br/>
+            <template if:true={cases}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={cases}
+                    columns={columns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+                
+            </template>
+            <template if:true={error}>
+                <p>Error: {error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

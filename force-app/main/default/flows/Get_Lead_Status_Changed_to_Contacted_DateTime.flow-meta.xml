@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <assignments>
+        <description>Get the date and time when the lead status change to contact</description>
+        <name>Set_Date_When_The_Status_Was_Set_To_Contacted</name>
+        <label>Set Date When The Status Was Set To Contacted</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Lead_Status_Changed_to_Contacted_DateTim__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>lead_status_date</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Records_1</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>lead_status_date</name>
+        <dataType>DateTime</dataType>
+        <expression>IF(ISPICKVAL({!$Record.Status}, &apos;Working - Contacted&apos;), NOW(), NOW())</expression>
+    </formulas>
+    <interviewLabel>Get Lead Status Changed to Contacted DateTime {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Lead Status Changed to Contacted DateTime</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Records_1</name>
+        <label>Update Records 1</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Lead_Status_Changed_to_Contacted_DateTim__c</field>
+            <value>
+                <elementReference>lead_status_date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Set_Date_When_The_Status_Was_Set_To_Contacted</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Working - Contacted</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

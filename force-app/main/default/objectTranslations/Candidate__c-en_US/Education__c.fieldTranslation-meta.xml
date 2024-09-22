@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Education --></label>
+    <name>Education__c</name>
+    <picklistValues>
+        <masterLabel>BA/BS</masterLabel>
+        <translation><!-- BA/BS --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>GED/HS Diploma</masterLabel>
+        <translation><!-- GED/HS Diploma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>JD</masterLabel>
+        <translation><!-- JD --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MA/MS/MBA</masterLabel>
+        <translation><!-- MA/MS/MBA --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MD</masterLabel>
+        <translation><!-- MD --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>PhD</masterLabel>
+        <translation><!-- PhD --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Post Doc</masterLabel>
+        <translation><!-- Post Doc --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
