@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Confirm and Update">
+        <!-- List of selected accounts -->
+        <lightning-datatable
+            key-field="Id"
+            data={selectedAccounts}
+            columns={columns}
+            hide-checkbox-column="true">
+        </lightning-datatable>
+
+        <!-- Input for new value -->
+        <lightning-input label="New Value" value={newValue} onchange={handleValueChange}></lightning-input>
+
+        <!-- Update and Back Buttons -->
+        <lightning-button label="Back" variant="neutral" onclick={handleBack}></lightning-button>
+        <lightning-button label="Update" variant="brand" onclick={handleUpdate}></lightning-button>
+    </lightning-card>
+</template>

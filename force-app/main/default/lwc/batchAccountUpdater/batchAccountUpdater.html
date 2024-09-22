@@ -1,0 +1,19 @@
+<template>
+    <template if:true={showAccountSelection}>
+        <c-account-selection-screen
+            accounts={accounts}
+            onnext={handleNext}
+            onsearch={handleSearch}
+            onfilter={handleFilter}>
+        </c-account-selection-screen>
+    </template>
+
+    <template if:true={showConfirmationAndUpdate}>
+        <c-confirmation-and-update-screen
+            selectedaccounts={selectedAccounts}
+            field={fieldToUpdate}
+            onback={handleBack}
+            onupdate={handleUpdate}>
+        </c-confirmation-and-update-screen>
+    </template>
+</template>

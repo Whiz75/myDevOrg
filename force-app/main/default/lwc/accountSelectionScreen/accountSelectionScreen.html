@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Select Accounts">
+        <!-- Search Bar -->
+        <lightning-input type="search" label="Search" onchange={handleSearch}></lightning-input>
+
+        <!-- Filters -->
+        <lightning-combobox label="Filter by Owner" options={ownerOptions} onchange={handleFilter}></lightning-combobox>
+
+        <!-- Account Table -->
+        <lightning-datatable
+            key-field="Id"
+            data={accounts}
+            columns={columns}
+            hide-checkbox-column="false"
+            onrowselection={handleRowSelection}>
+        </lightning-datatable>
+
+        <!-- Next Button -->
+        <lightning-button label="Next" variant="brand" onclick={handleNext}></lightning-button>
+    </lightning-card>
+</template>
