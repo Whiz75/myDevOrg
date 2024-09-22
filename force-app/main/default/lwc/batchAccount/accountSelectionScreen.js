@@ -14,4 +14,14 @@ export default class AccountSelectionScreen extends LightningElement {
         });
         this.dispatchEvent(selectedEvent);
     }
+
+    handleNext() {
+
+        if ((this.accounts.size < 1)) {
+            this.showToast('Error', 'Please select a atleast one record to continue...', 'error');
+            return;
+        }
+        this.showToast('Success', 'Moving to the next page in the account selection screen', 'success');
+        this.accountSelectionScreen = this.accountSelectionScreen === true ? false : true;
+    }
 }

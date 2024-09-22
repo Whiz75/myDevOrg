@@ -1,33 +1,25 @@
 
 /* Styling for the page header controls */
-.slds-page-header__controls { 
-    display: flex; 
-    justify-content: flex-end; 
-    padding-left: 5px;
+.slds-page-header__controls {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align items to the right */
+    padding: 1rem; /* Add padding for spacing */
 }
 
-
 /* Styling for the control container */
-/* .slds-page-header__control { */
-    /* display: flex; Use flexbox for list alignment */
-/* } */
+.slds-page-header__control {
+    display: flex; /* Use flexbox for list alignment */
+}
 
 /* Ensure the button group list is displayed inline */
-/* .slds-button-group-list { */
-    /* list-style: none; Remove default list styling */
-    /* padding: 0; Remove padding */
-    /* margin: 0; Remove margin */
-    /* display: flex; Use flexbox to align buttons horizontally */
-/* } */
+.slds-button-group-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Use flexbox to align buttons horizontally */
+}
 
 /* Styling for individual list items */
-/*.slds-button-group-list li {
-    margin-left: 0.5rem; /* Add some space between buttons 
-}*/
-
-/* Styling the searchbar */
-/* .slds-p-around_small{ 
-    padding-top: 0; 
-    margin-top: 0.5rem;
-}*/
-
+.slds-button-group-list li {
+    margin-left: 0.5rem; /* Add some space between buttons */
+}

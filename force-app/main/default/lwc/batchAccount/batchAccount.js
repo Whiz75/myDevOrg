@@ -34,13 +34,9 @@ export default class AccountTable extends LightningElement {
         return this.accountSelectionScreen ? accountSelectionScreen : confirmationAndUpdateScreen;
     }
 
-    switchScreen(){
-        this.accountSelectionScreen = this.accountSelectionScreen === true ? false : true;
-    }
-
-
+    /* Account Selection Screen */
+    
     // Define columns for the datatable
-    //SELECT Id, AccountNumber, CreatedDate, Name, Industry
     columns = [
         { label: 'Account Number', fieldName: 'AccountNumber', type: 'text' },
         { label: 'Account Name', fieldName: 'Name', type: 'url', typeAttributes: {
@@ -86,8 +82,34 @@ export default class AccountTable extends LightningElement {
 
     // Handle next and back button click
     handleNextAndBack() {
+
+        if ((this.accounts.size < 1)) {
+            this.showToast('Error', 'Please select a atleast one record to continue...', 'error');
+            return;
+        }
+        this.showToast('Success', 'Moving to the next page', 'success');
         this.accountSelectionScreen = this.accountSelectionScreen === true ? false : true;
     }
+
+    handleRowAction(event) {
+        const Id = event.detail.row.Id;
+    
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: Id,
+                objectApiName: 'Account',
+                actionName: 'view'
+            },
+            state: {
+                nooverride: '1',
+            }
+        }, true);  // The 'true' argument here opens in a new tab
+    }
+
+
+
+    /* Confirmation and Update Screen */
 
     // Handle industry selection change
     handleIndustryChange(event) {
@@ -121,22 +143,6 @@ export default class AccountTable extends LightningElement {
         return `/${accountId}`;
     }
 
-    handleRowAction(event) {
-        const accountId = event.detail.row.Id;
-    
-        this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
-            attributes: {
-                recordId: accountId,
-                objectApiName: 'Account',
-                actionName: 'view'
-            },
-            state: {
-                nooverride: '1',
-            }
-        }, true);  // The 'true' argument here opens in a new tab
-    }
-
     // Handle row selection event
     handleRowSelection(event) {
         this.selectedAccounts = event.detail.selectedRows;
@@ -161,10 +167,6 @@ export default class AccountTable extends LightningElement {
     get selectedAccountCount() {
         //return this.selectedAccounts.size;
         return this.selectedAccountIds.size;
-    }
-
-    handlePassingData(){
-        selectedAccounts = {Id,Name,Industry,CreatedDate};
     }
 
     //custom toast to display warnings, errors or messages

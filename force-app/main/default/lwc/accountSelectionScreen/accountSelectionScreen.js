@@ -30,4 +30,14 @@ export default class AccountSelectionScreen extends LightningElement {
     handleNext() {
         this.dispatchEvent(new CustomEvent('next', { detail: { selectedAccounts: this.selectedAccounts } }));
     }
+
+    handleNext() {
+
+        if ((this.accounts.size < 1)) {
+            this.showToast('Error', 'Please select a atleast one record to continue...', 'error');
+            return;
+        }
+        this.showToast('Success', 'Moving to the next page', 'success');
+        this.accountSelectionScreen = this.accountSelectionScreen === true ? false : true;
+    }
 }

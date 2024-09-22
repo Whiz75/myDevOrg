@@ -26,17 +26,16 @@
         <lightning-datatable
                 key-field="id"
                 data={selectedAccounts}
-                columns={columns}
-                onrowaction={handleRowAction}>
+                columns={columns}>
             </lightning-datatable>
     </template>
 
     <!--Else dispaly this error-->
-    <template if:false ={error}>
+    <!-- <template if:false ={error}>
         <div class="slds-text-color_error">
             An error occurred while loading the accounts: {error.body.message}
         </div>
-    </template>
+    </template> -->
     
 </lightning-card>
 </template>

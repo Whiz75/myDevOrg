@@ -1,76 +1,10 @@
 <template>
 
     <!-- Account Selection Screen Component -->
-    <c-account-selection-screen onaccountsselected={handleAccountsSelected}></c-account-selection-screen>
+    <c-account-selection-screen onaccountsselected={handleAccountSelected}></c-account-selection-screen>
 
     <!-- Display Confirmation and Update Screen only when there are selected accounts -->
     <template if:true={hasSelectedAccounts}>
         <c-confirmation-and-update-screen selected-accounts={selectedAccounts}></c-confirmation-and-update-screen>
     </template>
-    
-    <!--<lightning-card title="Batch Accounts" icon-name="standard:account">
-
-        <div class="slds-page-header__controls">
-            <div class="slds-page-header__control">
-                <ul class="slds-button-group-list">
-                    <li>
-                        <button class="slds-button slds-button_neutral" onclick={handleBack}>
-                            <lightning-icon icon-name="utility:back" size="xx-small" class="slds-button__icon slds-button__icon_left"></lightning-icon>
-                            Back
-                        </button>
-                    </li>
-                    <li>
-                        <button class="slds-button slds-button_neutral" onclick={handleUpdate}>
-                            <lightning-icon icon-name="utility:refresh" size="xx-small" class="slds-button__icon slds-button__icon_left"></lightning-icon>
-                            Update
-                        </button>
-                    </li>
-                    <li>
-                        <button class="slds-button slds-button_neutral" onclick={handleNext}>
-                            <lightning-icon icon-name="utility:forward" size="xx-small" class="slds-button__icon slds-button__icon_left"></lightning-icon>
-                            Next
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="slds-p-around_small">
-            <lightning-input
-                id="search-input"
-                label="Search Accounts"
-                value={searchKey}
-                onchange={handleSearchChange}
-                placeholder="Search this list">
-            </lightning-input>
-        </div>
-
-         <template if:false = {isSecondScreen}>
-            <template if:true={accounts}>
-                <lightning-datatable
-                    key-field="id"  
-                    data={filteredAccounts}  
-                    columns={columns}
-                    onrowaction={handleRowAction}
-                    selected-rows={selectedAccounts}
-                    show-row-number-column
-                    column-widths-mode="fixed">
-                </lightning-datatable>
-                <div class="slds-m-top_small">
-                    Selected Accounts: {selectedAccountCount}
-                </div>
-            </template>
-
-            <template if:true={error}>
-                <div class="slds-text-color_error">
-                    An error occurred while loading the accounts: {error.body.message}
-                </div>
-            </template>
-         </template>
-
-        <template if:true={isLoading}>
-            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
-        </template>
-
-    </lightning-card>-->
 </template>
