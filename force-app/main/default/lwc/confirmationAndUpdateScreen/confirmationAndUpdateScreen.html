@@ -1,18 +1,42 @@
+<!-- confirmationAndUpdateScreen.html -->
 <template>
-    <lightning-card title="Confirm and Update">
-        <!-- List of selected accounts -->
-        <lightning-datatable
-            key-field="Id"
-            data={selectedAccounts}
-            columns={columns}
-            hide-checkbox-column="true">
-        </lightning-datatable>
+    <lightning-card if:true ={accounts.length} title="CONFIRM AND UPDATE">
 
-        <!-- Input for new value -->
-        <lightning-input label="New Value" value={newValue} onchange={handleValueChange}></lightning-input>
+        <!-- next button to navigate to the next page -->
+        <div class="slds-page-header__control">
+            <ul class="slds-button-group-list">
+                <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleNext}>
+                        <lightning-icon icon-name="utility:back" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                        </lightning-icon>
+                        Back
+                    </button>
+                </li>
 
-        <!-- Update and Back Buttons -->
-        <lightning-button label="Back" variant="neutral" onclick={handleBack}></lightning-button>
-        <lightning-button label="Update" variant="brand" onclick={handleUpdate}></lightning-button>
+                <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleNext}>
+                        <lightning-icon icon-name="utility:forward" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                        </lightning-icon>
+                        Update
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        </br>
+        
+        <template if:true={accounts.length}>
+
+            <lightning-datatable
+                key-field="Id"
+                data={accounts}
+                columns={columns}>
+            </lightning-datatable>
+        </br>
+        <div class="slds-m-top_medium">
+            <p>Number of accounts to update: {accounts.length}</p>
+        </div>
+            
+        </template>
     </lightning-card>
 </template>

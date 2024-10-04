@@ -1,22 +1,30 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, wire, track,api } from 'lwc';
+import { subscribe, MessageContext } from 'lightning/messageService';
+import ACCOUNT_SELECTION_CHANNEL from '@salesforce/messageChannel/AccountSelectedChannel__c';
 
 export default class ConfirmationAndUpdateScreen extends LightningElement {
-    @api selectedAccounts;
-    @api field;
-    //@track newValue;
+    @api accounts = [];
+    @api selectedAccounts = [];
 
-    // Handle the input value change
-    handleValueChange(event) {
-        //this.newValue = event.target.value;
+    @api
+    handleAccountsConfirmation(selectedAccounts) {
+        this.accounts = selectedAccounts;
     }
 
-    // Handle the "Update" button click
-    handleUpdate() {
-        //this.dispatchEvent(new CustomEvent('update', { detail: { updatedValue: this.newValue } }));
-    }
+    // Define columns for the datatable
+    columns = [
+        { label: 'Account Number', fieldName: 'AccountNumber', type: 'text' },
+        { label: 'Account Name', fieldName: 'Name', type: 'url', typeAttributes: {
+            target: '_self',
+            label: {fieldName: 'Name'},
+            variant: 'base'
+            }},
+        { label: 'Industry', fieldName: 'Industry', type: 'text' },
+        { label: 'Created Date', fieldName: 'CreatedDate', type: 'text'}
+    ];
 
-    // Handle the "Back" button click
-    handleBack() {
-        this.dispatchEvent(new CustomEvent('back'));
+    //handle selected account update
+    handleUpdate(){
+        
     }
 }
