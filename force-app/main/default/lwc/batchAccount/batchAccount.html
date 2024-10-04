@@ -1,10 +1,47 @@
 <template>
+    <lightning-card title="ACCOUNTS">
 
-    <!-- Account Selection Screen Component -->
-    <c-account-selection-screen onaccountsselected={handleAccountSelected}></c-account-selection-screen>
+        <!-- next button to navigate to the next page -->
+        <div class="slds-page-header__control">
+            <ul class="slds-button-group-list">
+                <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleNext}>
+                        <lightning-icon icon-name="utility:forward" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                        </lightning-icon>
+                        Next
+                    </button>
+                </li>
+            </ul>
+        </div>
 
-    <!-- Display Confirmation and Update Screen only when there are selected accounts -->
-    <template if:true={hasSelectedAccounts}>
-        <c-confirmation-and-update-screen selected-accounts={selectedAccounts}></c-confirmation-and-update-screen>
-    </template>
+         <!-- Search Input for filtering accounts -->
+         <div class="slds-p-around_small">
+            <lightning-input
+                id="search-input"
+                value={searchKey}
+                onchange={handleSearchChange}
+                placeholder="Search this list">
+            </lightning-input>
+        </div>
+
+        <template if:true={accounts.length}>
+            <lightning-datatable
+                key-field="Id"
+                data={filteredAccounts}
+                onrowselection={handleRowSelection}
+                columns={columns}>
+        </lightning-datatable>
+
+            <div class="slds-m-top_medium">
+                <p> Selected accounts: {selectedAccounts.length}</p>
+            </div>
+        </template>
+
+        <!--Else dispaly this error-->
+        <template if:false={accounts.length}>
+            <div class="slds-text-color_error">
+                An error occurred while loading the accounts
+            </div>
+        </template>
+    </lightning-card>
 </template>

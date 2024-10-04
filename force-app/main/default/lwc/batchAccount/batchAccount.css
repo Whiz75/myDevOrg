@@ -1,3 +1,16 @@
 .slds-p-around_small{
-    padding-left: 100px !important;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.slds-page-header__control{
+    margin-right: 18px;
+    margin-bottom: 4px;
+    float: right;
+}
+
+/* styling for the number of records selected */
+.slds-m-top_medium{
+    margin-left: 4px;
 }
