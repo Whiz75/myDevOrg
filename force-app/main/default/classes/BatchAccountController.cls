@@ -4,13 +4,27 @@ public with sharing class BatchAccountController {
         //Query to get all accounts records
         return [SELECT Id, AccountNumber, CreatedDate, Name, Industry
         FROM Account
+        WITH SECURITY_ENFORCED
+        LIMIT 10];
+    }
+
+    // Apex Controller method for Aura Component
+    @AuraEnabled(cacheable=true)
+    public static List<Account> getSelectedAccounts(List<String> accountIds) {
+        return [SELECT Id, Name 
+        FROM Account 
+        WHERE Id IN :accountIds
         WITH SECURITY_ENFORCED];
     }
 
     @AuraEnabled(cacheable=true)
     public static void accountToUpdate(String accoundId, String newIndustry){
         try {
-            Account account = [SELECT Id, Industry FROM Account WHERE Id =: accoundId LIMIT 1];
+            Account account = [SELECT Id, Industry 
+            FROM Account 
+            WHERE Id =: accoundId 
+            WITH SECURITY_ENFORCED
+            LIMIT 1];
 
             //Update the industry field with the new value
             account.Industry = newIndustry;
