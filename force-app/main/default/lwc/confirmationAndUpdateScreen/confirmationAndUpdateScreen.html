@@ -5,17 +5,19 @@
         <!-- next button to navigate to the next page -->
         <div class="slds-page-header__control">
             <ul class="slds-button-group-list">
+                <!-- The back button -->
                 <li>
-                    <button class="slds-button slds-button_neutral" onclick={handleNext}>
+                    <button class="slds-button slds-button_neutral" onclick={handleBack}>
                         <lightning-icon icon-name="utility:back" size="xx-small" class="slds-button__icon slds-button__icon_left">
                         </lightning-icon>
                         Back
                     </button>
                 </li>
 
+                <!-- The update button -->
                 <li>
-                    <button class="slds-button slds-button_neutral" onclick={handleNext}>
-                        <lightning-icon icon-name="utility:forward" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                    <button class="slds-button slds-button_neutral" onclick={handleUpdate}>
+                        <lightning-icon icon-name="utility:record_update" size="xx-small" class="slds-button__icon slds-button__icon_left">
                         </lightning-icon>
                         Update
                     </button>
@@ -23,18 +25,31 @@
             </ul>
         </div>
 
+        <br/>
+
+        <!-- Industry Picklist -->
+        <lightning-combobox class="slds-p-around_small"
+            label="Select Industry"
+            value={industryValue}
+            placeholder="Choose an Industry"
+            options={industryOptions} 
+            onchange={handleIndustryChange}>
+        </lightning-combobox>
+
+        <!-- new line break -->
         </br>
         
         <template if:true={accounts.length}>
-
             <lightning-datatable
                 key-field="Id"
                 data={accounts}
-                columns={columns}>
+                onrowselection={handleRowSelection}
+                columns={columns}
+                show-row-number-column>
             </lightning-datatable>
         </br>
         <div class="slds-m-top_medium">
-            <p>Number of accounts to update: {accounts.length}</p>
+            <p>Number of accounts to update: {accountToUpdate.length}</p>
         </div>
             
         </template>
