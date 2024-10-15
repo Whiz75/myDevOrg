@@ -1,4 +1,14 @@
 <template>
-    <c-batch-account onaccountsconfirmation={handleAccountsConfirmation}></c-batch-account>
-    <c-confirmation-and-update-screen></c-confirmation-and-update-screen>
+    <lightning-card>
+
+        <c-batch-account onaccountsconfirmation={handleAccountsConfirmation}></c-batch-account>
+        <c-confirmation-and-update-screen></c-confirmation-and-update-screen>
+        <!-- <template if:true={isBatchAccountScreen}>
+            <c-batch-account onnext={handleNext} onaccountsconfirmation={handleAccountsConfirmation}></c-batch-account>
+        </template>
+        
+        <template if:true={isConfirmationAndUpdateScreen}>
+            <c-confirmation-and-update-screen onback={handleBack}></c-confirmation-and-update-screen>
+        </template> -->
+    </lightning-card>
 </template>

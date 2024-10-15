@@ -1,0 +1,12 @@
+:host {
+    display: block;
+    min-height: 300px; /* Adjust as needed */
+}
+
+lightning-card {
+    height: 100%;
+}
+.component-container {
+    min-height: 300px; /* Adjust this value as needed */
+    padding: 1rem;
+}
