@@ -4,6 +4,12 @@
     margin-left: auto;
 }
 
+/* style the searchbar */
+.slds-p-around_small{
+    display: block;
+    width: 40%;
+}
+
 .slds-page-header__control{
     margin-right: 18px;
     margin-bottom: 4px;

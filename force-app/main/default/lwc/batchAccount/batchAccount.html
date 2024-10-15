@@ -1,12 +1,19 @@
 <template>
-    <lightning-card title="ACCOUNTS">
+    <lightning-card class = "accounts-container" title="SELECT ACCOUNTS">
 
-        <!-- next button to navigate to the next page -->
+        <!-- next & refresh buttons to the next page and refresh the page-->
         <div class="slds-page-header__control">
             <ul class="slds-button-group-list">
                 <li>
+                    <button class="slds-button slds-button_neutral" onclick={handleRefresh}>
+                        <lightning-icon icon-name="utility:refresh" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                        </lightning-icon>
+                        Refresh
+                    </button>
+                </li>
+                <li>
                     <button class="slds-button slds-button_neutral" onclick={handleNext}>
-                        <lightning-icon icon-name="utility:forward" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                        <lightning-icon icon-name="utility:chevronright" size="xx-small" class="slds-button__icon slds-button__icon_left">
                         </lightning-icon>
                         Next
                     </button>
@@ -14,26 +21,54 @@
             </ul>
         </div>
 
+        <!-- Loading spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+
          <!-- Search Input for filtering accounts -->
          <div class="slds-p-around_small">
             <lightning-input
                 id="search-input"
                 value={searchKey}
                 onchange={handleSearchChange}
-                placeholder="Search this list">
+                placeholder="Search this list"
+                icon-name="utility:search"
+                type="search">
             </lightning-input>
         </div>
-
+        
         <template if:true={accounts.length}>
             <lightning-datatable
                 key-field="Id"
                 data={filteredAccounts}
                 onrowselection={handleRowSelection}
-                columns={columns}>
-        </lightning-datatable>
+                enable-infinite-loading="true"
+                columns={columns}
+                onsort={handleSort}
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection}
+                is-loading={isInfiniteLoading}
+                show-row-number-column>
+            </lightning-datatable>
+
+            <!-- Button to load more records -->
+            <template if:true={hasMoreData}>
+                <div class="slds-page-header__control">
+                    <ul class="slds-button-group-list">
+                        <li>
+                            <button class="slds-button slds-button_neutral" onclick={handleLoadMore}>
+                                <lightning-icon icon-name="utility:refresh" size="xx-small" class="slds-button__icon slds-button__icon_left">
+                                </lightning-icon>
+                                Load More
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </template>
 
             <div class="slds-m-top_medium">
-                <p> Selected accounts: {selectedAccounts.length}</p>
+                <p> Number of accounts selected : {selectedAccounts.length}</p>
             </div>
         </template>
 
